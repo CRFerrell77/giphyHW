@@ -1,0 +1,17 @@
+.outline {
+    border: 1px solid blue;
+}
+.buttonRow {
+    text-align: center;
+    display: inline;
+}
+.btnStyle:hover {
+    color: rgb(230, 6, 200);
+    background-color: black;
+    border: 1px solid rgb(6, 230, 211);
+}
+.btnStyle {
+    color: rgb(6, 230, 211);
+    background-color: black;
+    border: 1px solid rgb(255, 166, 0);
+}
