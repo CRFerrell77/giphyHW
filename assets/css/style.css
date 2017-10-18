@@ -7,7 +7,7 @@ h1 {
 
 }
 .outline {
-    border: 1px solid blue;
+    border: 1px solid rgb(55, 255, 55);
 }
 .buttonRow {
     display: inline;
@@ -25,4 +25,14 @@ h1 {
 .jumbotron{
     background: transparent;
     color: rgb(230, 6, 200);
+}
+#input80s {
+    color: rgb(6, 230, 211);
+    background-color: transparent;
+    border: 1px solid rgb(255, 166, 0);
+}
+#add-nos {
+    color: rgb(6, 230, 211);
+    background-color: black;
+    border: 1px solid rgb(255, 166, 0);
 }

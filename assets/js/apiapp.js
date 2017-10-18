@@ -7,7 +7,7 @@ $(document).ready(function(){
     //function to create selector buttons (wipe all then create new from array)
     function setBtns () {
         //wipe the div clean
-        $("#buttonRow").html();
+        $("#buttonRow").html("");
         //then repopulate buttons
         for (i=0; i<topicArray.length; i++) {
             //console.log(topicArray[i]);
@@ -51,6 +51,18 @@ $(document).ready(function(){
 
     //function to create a new button from a text input
         //then create buttons again
+    $("#add-nos").on("click", function(event) {
+        event.preventDefault(); //without this line, everything was resetting... why?
+
+        var nostalgia = ($("#input80s").val().trim());
+        //add it to the list
+        topicArray.push(nostalgia);
+        //reset buttons!
+        setBtns();
+
+        //this is working, but after I add a button it no longer is listening for giphy calls?
+        
+    })
 
     //function to swap animated with still
     $(document.body).on("click", ".movement", function() {
@@ -65,7 +77,7 @@ $(document).ready(function(){
           $(this).attr("src", $(this).attr("ani-still")).attr("animate", "still");
         };
         
-    });
+    })
 
 });
 
