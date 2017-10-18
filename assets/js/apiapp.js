@@ -52,15 +52,19 @@ $(document).ready(function(){
                 var stillImg = response.data[i].images.fixed_height_still.url;
                 var moveImg = response.data[i].images.fixed_height.url;
                 var picRate = response.data[i].rating;
+
+                //wrap it up div
+                var noInline = $("<div>").attr("class", "float-left noInline");
+  
                 //now to get the rating on there
-                var thisRate = $("<div>").text("Rated: " + picRate);
-                //add the thing to the box of things
-                $("#thingBox").prepend(thisRate);
+                var thisRate = $("<p>").text("Rated: " + picRate);
+                noInline.prepend(thisRate);
+
                 //make the Img a 'thing', add the motion/still data
                 var thisGiphy = $("<img>").attr("src", stillImg).attr("ani-still", stillImg).attr("ani-move", moveImg).attr("animate", "still").attr("class", "movement").attr("id", [i]);
-                //add the thing to the box of things
-                $("#thingBox").prepend(thisGiphy);
+                noInline.prepend(thisGiphy);
 
+                $("#thingBox").prepend(noInline);
             };   
         });
     });
