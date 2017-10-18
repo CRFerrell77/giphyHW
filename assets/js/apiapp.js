@@ -36,9 +36,10 @@ $(document).ready(function(){
         }).done(function(response) {
             for (i=0; i<10; i++) { 
                 //set the fixed H, still Img to a var
-                var currImg = response.data[i].images.fixed_height_still.url;
+                var stillImg = response.data[i].images.fixed_height_still.url;
+                var moveImg = response.data[i].images.fixed_height.url;
                 //make the Img a 'thing', add the motion/still data
-                var thisGiphy = $("<img>").attr("src", currImg).attr("animate", "still").attr("class", "movement");
+                var thisGiphy = $("<img>").attr("src", stillImg).attr("ani-still", stillImg).attr("ani-move", moveImg).attr("animate", "still").attr("class", "movement");
                 //add the thing to the box of things
                 $("#thingBox").prepend(thisGiphy);
             };   
@@ -53,16 +54,15 @@ $(document).ready(function(){
 
     //function to swap animated with still
     $(document.body).on("click", ".movement", function() {
-
-        console.log("hello world");
+        console.log("clicky");
 
         var ani = $(this).attr("animate");
 
         if (ani === "still") {
-          $(this).attr("src", $(this).attr("images.fixed_height.url")).attr("animate", "moving");
+          $(this).attr("src", $(this).attr("ani-move")).attr("animate", "moving");
         } 
         if (ani === "moving") {
-          $(this).attr("src", $(this).attr("images.fixed_height_still.url")).attr("animate", "still");
+          $(this).attr("src", $(this).attr("ani-still")).attr("animate", "still");
         };
         
     });
