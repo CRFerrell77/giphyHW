@@ -18,8 +18,22 @@ $(document).ready(function(){
     
     setBtns();
 
+    //function to create a new button from a text input
+        //then create buttons again
+    $("#add-nos").on("click", function(event) {
+        event.preventDefault(); //without this line, everything was resetting... why?
+
+        var nostalgia = ($("#input80s").val().trim());
+        //add it to the list
+        topicArray.push(nostalgia);
+        //reset buttons!
+        setBtns();
+    });
+
     //function to get button info / set Object
-    $(".select").on("click", function () {
+    $(document.body).on("click", ".select", function() {
+        //empty out former giphy's (if any)
+        $("#thingBox").html("");
         //Pull id
         currentTopic = $(this).attr("id");
         //console.log(currentTopic);
@@ -44,25 +58,7 @@ $(document).ready(function(){
                 $("#thingBox").prepend(thisGiphy);
             };   
         });
-
-
     });
-
-
-    //function to create a new button from a text input
-        //then create buttons again
-    $("#add-nos").on("click", function(event) {
-        event.preventDefault(); //without this line, everything was resetting... why?
-
-        var nostalgia = ($("#input80s").val().trim());
-        //add it to the list
-        topicArray.push(nostalgia);
-        //reset buttons!
-        setBtns();
-
-        //this is working, but after I add a button it no longer is listening for giphy calls?
-        
-    })
 
     //function to swap animated with still
     $(document.body).on("click", ".movement", function() {
@@ -76,8 +72,6 @@ $(document).ready(function(){
         if (ani === "moving") {
           $(this).attr("src", $(this).attr("ani-still")).attr("animate", "still");
         };
-        
-    })
-
+    });
 });
 
