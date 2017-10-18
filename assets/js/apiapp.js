@@ -1,4 +1,3 @@
-//window.onload = function () {
 $(document).ready(function(){
     //global vars
     var topicArray = ["gi joe", "Nintendo", "He-Man", "Thundercats", "Alf", "Pac-Man", "DuckTales", "Voltron" ] //80's nostalgia
@@ -29,13 +28,20 @@ $(document).ready(function(){
         console.log(currObj);
         
         //function to populate 10 pictures
-           //need to add in animated or not state "animate" (to the picture or the object?)
-        //AJAX call w/response (start with one picture)
+           //need to add in animated or not state "animate"
+        //AJAX call w/response 
         $.ajax({
-        url: queryURL,
+        url: currObj,
         method: "GET"
         }).done(function(response) {
-            var currImg = response.data.images.fixed_height_still.url;
+            for (i=0; i<10; i++) { 
+                //set the fixed H, still Img to a var
+                var currImg = response.data[i].images.fixed_height_still.url;
+                //make the Img a 'thing', add the motion/still data
+                var thisGiphy = $("<img>").attr("src", currImg).attr("animate", "still").attr("class", "movement");
+                //add the thing to the box of things
+                $("#thingBox").prepend(thisGiphy);
+            };   
         });
 
 
@@ -46,17 +52,18 @@ $(document).ready(function(){
         //then create buttons again
 
     //function to swap animated with still
-    // $("//class for the shown picture//").on("click", function() {
+    $(".movement").on("click", function() {
         
-    //     var ani = $(this).attr("animate");
+        var ani = $(this).attr("animate");
 
-    //     if (ani === "still") {
-    //       $(this).attr("src", $(this).attr("//URL for animated//")).attr("animate", "moving");
-    //     } 
-    //     if (ani ==="moving") {
-    //       $(this).attr("src", $(this).attr("//URL for still//")).attr("animate", "still");
-    //     };
+        if (ani === "still") {
+          $(this).attr("src", $(this).attr("//URL for animated//")).attr("animate", "moving");
+        } 
+        if (ani ==="moving") {
+          $(this).attr("src", $(this).attr("//URL for still//")).attr("animate", "still");
+        };
         
-    // });
+    });
+
 });
 
