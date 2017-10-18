@@ -52,15 +52,17 @@ $(document).ready(function(){
         //then create buttons again
 
     //function to swap animated with still
-    $(".movement").on("click", function() {
-        
+    $(document.body).on("click", ".movement", function() {
+
+        console.log("hello world");
+
         var ani = $(this).attr("animate");
 
         if (ani === "still") {
-          $(this).attr("src", $(this).attr("//URL for animated//")).attr("animate", "moving");
+          $(this).attr("src", $(this).attr("images.fixed_height.url")).attr("animate", "moving");
         } 
-        if (ani ==="moving") {
-          $(this).attr("src", $(this).attr("//URL for still//")).attr("animate", "still");
+        if (ani === "moving") {
+          $(this).attr("src", $(this).attr("images.fixed_height_still.url")).attr("animate", "still");
         };
         
     });
