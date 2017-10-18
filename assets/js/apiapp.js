@@ -1,6 +1,6 @@
 $(document).ready(function(){
     //global vars
-    var topicArray = ["G.I. Joe", "Nintendo", "He-Man", "Thundercats", "Motley Crue", "Pac-Man", "DuckTales", "Voltron", "Hulkamania" ] //80's nostalgia
+    var topicArray = ["GI Joe", "Nintendo", "He-Man", "Thundercats", "Motley Crue", "Pac-Man", "DuckTales", "Voltron", "Hulkamania" ] //80's nostalgia
     var currentTopic = "";
     var apiKeyURL = "https://api.giphy.com/v1/gifs/search?api_key=OOnfnFi6GR7YTlFGpGbxmYlaQa6JnMwc&q="; //easier than remembering it
 
@@ -42,7 +42,6 @@ $(document).ready(function(){
         console.log(currObj);
         
         //function to populate 10 pictures
-           //need to add in animated or not state "animate"
         //AJAX call w/response 
         $.ajax({
         url: currObj,
@@ -54,7 +53,7 @@ $(document).ready(function(){
                 var moveImg = response.data[i].images.fixed_height.url;
                 var picRate = response.data[i].rating;
                 //make the Img a 'thing', add the motion/still data
-                var thisGiphy = $("<img>").attr("src", stillImg).attr("ani-still", stillImg).attr("ani-move", moveImg).attr("animate", "still").attr("class", "movement");
+                var thisGiphy = $("<img>").attr("src", stillImg).attr("ani-still", stillImg).attr("ani-move", moveImg).attr("animate", "still").attr("class", "movement").attr("id", [i]);
                 //add the thing to the box of things
                 $("#thingBox").prepend(thisGiphy);
                 //now to get the rating on there
