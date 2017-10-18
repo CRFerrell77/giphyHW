@@ -27,10 +27,20 @@ $(document).ready(function(){
         //set Object
         var currObj = apiKeyURL + currentTopic + "&limit=10&offset=0&rating=PG&lang=en";
         console.log(currObj);
+        
+        //function to populate 10 pictures
+           //need to add in animated or not state "animate" (to the picture or the object?)
+        //AJAX call w/response (start with one picture)
+        $.ajax({
+        url: queryURL,
+        method: "GET"
+        }).done(function(response) {
+            var currImg = response.data.images.fixed_height_still.url;
+        });
+
+
     });
 
-    //function to populate 10 pictures
-        //need to add in animated or not state "animate" (to the picture or the object?)
 
     //function to create a new button from a text input
         //then create buttons again
